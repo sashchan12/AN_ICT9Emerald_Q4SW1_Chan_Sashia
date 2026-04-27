@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Q4 Seatwork 1</title>
+
+    <style>
+        body {
+            background-image: url("bg.jpg");
+			background-repeat: no-repeat;
+			background-size: cover;
+			background-attachment: fixed;
+			background-position: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #1a1a1a;
+            color: white;
+            border-radius: 15px;
+            padding: 50px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 5px;
+        }
+
+        .header-row img {
+            width: 100px;
+			height: 100px;
+			border-radius: 50%;
+			border: 3px solid #0a1242;
+			margin-bottom: 5px;
+        }
+
+        .header-row h2 {
+            margin: 0;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        #staylogged {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 15px 0;
+            font-size: 16px;
+        }
+
+        #staylogged input {
+            width: auto;
+            margin: 0;
+        }
+
+        .stay-msg {
+            display: none;
+            width: 100%;
+            color: #ee9dfe;
+            font-size: 14px;
+            text-align: left;
+            margin-left: 25px;
+            margin-top: 5px;
+        }
+
+        #stay:checked~.stay-msg {
+            font-style: italic;
+            display: flex;
+        }
+
+        input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 1px solid #445;
+            border-radius: 25px;
+            box-sizing: border-box;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 15px;
+            background: #49218b;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .action-btn {
+            background: #ee9dfe;
+            color: #1a1a1a;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        .footer-link {
+            margin-top: 20px;
+            display: block;
+            color: #ee9dfe;
+            text-decoration: none;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="header-row">
+            <img src="logo.jpg" class="Logo">
+            <h2>GitHub 2.0 Login</h2>
+        </div>
+
+        <p>Please input your username and password</p>
+
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+
+        <div id="staylogged">
+            <input type="checkbox" id="stay">
+            <label for="stay">Stay logged in</label>
+            <div class="stay-msg">
+                <p>Your session will stay active on this device.</p>
+            </div>
+        </div>
+
+        <button onclick="login()">LOGIN</button>
+        <button class="action-btn" type="reset" onclick="window.location.reload()">CANCEL</button>
+
+        <div style="margin-top: 10px; text-align: center;">
+            <a href="https://github.com/password_reset" target="_blank"> Forgot Password?</a>
+        </div>
+
+    </div>
+
+    <script>
+        var user = "MrBalajadia_ICT9"
+        var pwd = "Ineed8hoursofsleep"
+
+        var attempts = 0;
+        var max = 3;
+
+        function login() {
+            while (attempts < max) {
+                var inputuser = document.getElementById("username").value;
+                var inputpwd = document.getElementById("password").value;
+
+                if (inputuser === user && inputpwd === pwd) {
+                    alert("Login Successful! Welcome " + user);
+                    return;
+                } else {
+                    attempts++;
+                    alert("Login Failed. Attempts Left: " + (max - attempts));
+                    return;
+                }
+            }
+            if (attempts >= max) {
+                alert("Account Locked! Too many failed attempts.")
+            }
+        }   
+    </script>
+</body>
+
+</html>
